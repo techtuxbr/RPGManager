@@ -3,6 +3,16 @@
 #include <time.h>
 #include <string.h>
 
+int roll(int size,int amount){
+    int result = 0;
+    int i;
+    for(i = 0;i < amount;i++){
+        srand(time(NULL)+rand());
+        result = result + (rand() % size);
+    }
+
+    return result;
+}
 
 void dice(){
     char input[255];
@@ -36,11 +46,8 @@ void dice(){
         tempD->data.amount = atoi(ch);
         ch = strtok(NULL,"\n d,");
         tempD->data.size = atoi(ch);
+        printf("\n Aleatorio foi: %d \n",roll(tempD->data.size,tempD->data.amount));
     }
-
     listDices(dices);
 }
 
-int roll(int size){
-
-}
