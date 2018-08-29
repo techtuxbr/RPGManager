@@ -6,6 +6,11 @@
         "charname.h": "c",
         "util.c": "cpp",
         "list.c": "cpp",
-        "characters.c": "cpp"
+        "characters.c": "cpp",
+        "encounters.c": "cpp",
+        "util.h": "c",
+        "dice.h": "c",
+        "character.h": "c",
+        "encounters.h": "c"
     }
 }
