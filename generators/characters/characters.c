@@ -9,7 +9,7 @@ char karma[10][80] = {"Santo","Puro","Bondoso","Bom","Indecente","Mal","Perverso
 char defects[15][80] = {"Medo de escuro","Arrogante","Egostia","Medo de altura","Ignorante","Odeia pessoas","Odeia Elfos","Odeia outras racas","Cego","Surdo","Mudo","Narcolepsia","Assombrado","Sem medo de nada","Azarado"}; 
 
 int randomNumber(int max,int plus){
-    srand(time(NULL) + plus);
+    srand(time(NULL) + plus + rand());
     return (rand() % max);
 }
 
@@ -29,4 +29,44 @@ Character newCharacter(char* name){
     ch.wis = randomNumber(10,9);
 
     return ch;
+}
+
+void exportCharacter(int amount,int type,NameList* list){
+    FILE* file;
+    int i;
+    switch(type){
+        case 1:
+            file = fopen("./chars.csv","w");
+            fprintf(file,"Nome, Sexo, Classe, Raça,Karma,Defeito,Força,Destreza,Constituição,Inteligência,Sabedoria\n");
+            for(i=0;i < amount;i++){
+                Character c = newCharacter(getRandomName(list));
+                fprintf(file,"%s,%d,%s,%s,%s,%s,%d,%d,%d,%d,%d\n",c.name,c.sex,c.charClass,c.race,c.karma,c.defects,c.str,c.dex,c.con,c.intel,c.wis);
+             }
+        break;
+        case 2:
+            file = fopen("./chars.json","w");
+            fprintf(file,"[");
+            for(i=0;i < amount;i++){
+                Character c = newCharacter(getRandomName(list));
+                fprintf(file,"\n\t{\n");
+                fprintf(file,"\t\t\"Nome\":\"%s\",\n\t\t\"Sexo\":%d,\n\t\t\"Classe\":\"%s\",\n\t\t\"Raca\":\"%s\",\n\t\t\"Karma\":\"%s\",\n\t\t\"Defeito\":\"%s\",\n\t\t\"Forca \": %d,\n\t\t\"Destreza\": %d,\n\t\t\"Constituicao\":%d,\n\t\t\"Inteligencia\":%d,\n\t\t\"Sabedoria\":%d",c.name,c.sex,c.charClass,c.race,c.karma,c.defects,c.str,c.dex,c.con,c.intel,c.wis);
+                if(i == amount-1){
+                    fprintf(file,"\n\t}");
+                }else{
+                    fprintf(file,"\n\t},");
+                }
+                
+             }            
+            fprintf(file,"\n]");
+        break;
+        default:
+            file = fopen("./chars.csv","w");
+            fprintf(file,"Nome, Sexo, Classe, Raça,Karma,Defeito,Força,Destreza,Constituição,Inteligência,Sabedoria\n");
+            for(i=0;i < amount;i++){
+                Character c = newCharacter(getRandomName(list));
+                fprintf(file,"%s,%d,%s,%s,%s,%s,%d,%d,%d,%d,%d\n",c.name,c.sex,c.charClass,c.race,c.karma,c.defects,c.str,c.dex,c.con,c.intel,c.wis);
+             }
+        break;
+    }
+    fclose(file);
 }

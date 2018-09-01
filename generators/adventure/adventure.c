@@ -25,17 +25,11 @@ char* getAdventureData(char* dir){
 	
 	while(c<i){    
 		fgets(whoPart,255,file);
-		strcpy(whoList[c].data,whoPart);
+		strcpy(whoList[c].data,strtok(whoPart,"\n"));
 		c++;
 	}
-	
-	/*
-	int d;
-	for(d = 0; d < i;d++){
-		printf("\n\nElemento: %s \n\n",whoList[d].data);	
-	}*/
-	
-	srand(time(NULL));
+		
+	srand(time(NULL)+rand());
 	int randNum = (rand() % (i-1));
 	
 	return whoList[randNum].data;
@@ -48,11 +42,11 @@ char* condition(){
 					"Alem disso, durante a missao, o grupo vai conhecer um velho mago que ira perseguir todos durante toda a missao",
 					"Tambem, durante a missao, o grupo vai se encontrar com um velho conhecido."
 					};				
-	srand(time(NULL)+20);
+	srand(time(NULL)+rand());
 	int randNum = (rand()%10);
 	if(randNum >= 5){
 		char* sentence = (char*) calloc(255,sizeof(char));
-		srand(time(NULL)+220);
+		srand(time(NULL)+rand());
 		randNum = (rand()%4);
 		strcpy(sentence,conditionList[randNum]);
 		return sentence;

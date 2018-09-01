@@ -25,12 +25,13 @@ char* getEncounterData(char* dir){
 	
 	while(c<i){    
 		fgets(whoPart,255,file);
+		strtok(whoPart,"\n");
 		strcpy(whoList[c].data,whoPart);
 		c++;
 	}
 	
 
-	srand(time(NULL));
+	srand(time(NULL)+rand());
 	int randNum = (rand() % (i-1));
 	
 	return whoList[randNum].data;

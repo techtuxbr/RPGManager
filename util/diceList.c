@@ -48,7 +48,7 @@ void addDice(Dice data, DiceList* list){
 void listDices(DiceList* list){
         DiceNode* tempElement = list->first;
         while(tempElement != NULL){
-            printf("ID: %d - Nome: %s - Lados: %d - Quantidade: %d\n",tempElement->id,tempElement->data.name,tempElement->data.size,tempElement->data.amount);
+            printf("ID: %d - Nome: %s - Lados: %d - Quantidade: %d - Resultado: %d\n",tempElement->id,tempElement->data.name,tempElement->data.size,tempElement->data.amount,tempElement->data.result);
             tempElement = tempElement->next;
         }
 }

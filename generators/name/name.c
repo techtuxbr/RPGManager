@@ -36,7 +36,7 @@ void parseNames(char* path, NameList* nameList){
 }
 
 char* getRandomName(NameList* list){
-    srand(time(NULL));    
+    srand(time(NULL)+rand());    
     int max = list->counter;
     int id = (rand() % max);
     char* returnedName = (char*)calloc(80,sizeof(char));
