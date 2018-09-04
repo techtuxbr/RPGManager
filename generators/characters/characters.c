@@ -3,7 +3,7 @@
 #include <string.h>
 #include <time.h>
 
-char classes[6][80] = {"Guerreiro","Mago","Bruxo","Necromancer","Cacador de bruxas","Paladino"};
+char classes[40][80] = {"Guerreiro","Mago","Bruxo","Necromancer","Cacador de bruxas","Paladino","Barbaro","Bardo","Clerigo","Cavaleiro","Druida","Lutador","Monge","Ninja","Nobre","Ranger","Samurai","Samamritano"};
 char races[7][80] = {"Humano","Orc","Elf","Dwarf","Argoniano","Khajiht","Hobbit"};
 char karma[10][80] = {"Santo","Puro","Bondoso","Bom","Indecente","Mal","Perverso","Caotico","Caoticamente mal"};
 char defects[15][80] = {"Medo de escuro","Arrogante","Egostia","Medo de altura","Ignorante","Odeia pessoas","Odeia Elfos","Odeia outras racas","Cego","Surdo","Mudo","Narcolepsia","Assombrado","Sem medo de nada","Azarado"}; 
@@ -17,7 +17,7 @@ Character newCharacter(char* name){
     Character ch;
     strcpy(ch.name,name);
     ch.sex = randomNumber(2,3);
-    strcpy(ch.charClass,classes[randomNumber(5,1)]);
+    strcpy(ch.charClass,classes[randomNumber(17,1)]);
     strcpy(ch.race,races[randomNumber(6,2)]);
     strcpy(ch.karma,karma[randomNumber(9,3)]);
     strcpy(ch.defects,defects[randomNumber(15,4)]);
