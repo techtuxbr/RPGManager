@@ -54,25 +54,53 @@ int main(){
                     case 0:
                         break;
                     case 1:
+                            /* 
+                                Primeira opcao: gerador de nomes
+                                Chamada da função que é o quiz do gerador de nomes
+                                que vai fazer alguns questionamentos para o usuário a respeito
+                                de qual tipo de nome ele quer gerar.
+                                ;////////////////////////
+                                Recebe a lista de nomes para a gerção aleatória!
+                            */
                             nameGeneratorQuiz(firstNames,lastNames);
                         break;
                     case 2:
+                            /* 
+                                Segunda opção -- Gerador de personagens
+                                Recebe um nome aleatório gerado pela função getRandomName();
+                            */ 
                             myChar = newCharacter(getRandomName(firstNames));
+                            // Chamo o método clear para limpar a tela
                             clear();
+                            // Apos o personagem ter sido gerado ele é exibido com o método printCharInfo
                             printCharInfo(myChar);
                         break;
                     case 3:
+                        /* 
+                            Terceira opção - Gerador de aventuras
+                            Recebe a lista de nomes para gerar NPC's com nomes diferentes
+                        */
                         adventureGenerator(firstNames);
                         break;
                     case 4:
+                        /* 
+                            Quarta opção - Gerador de encontros
+                        */
                         encounterGenerator();
                         break;
                     case 5:
+                        /* 
+                            Quinta opção - Dados 
+                        */
+                        // Limpar tela
                         clear();
+                        // Limpar buffer para evitar conflitos entre o fgets e o switch case.
                         clearBuffer();
                         dice();
                         break;
                     case 6:
+                        // Sexta opção -- Exportar personagens
+                        // Recebe uma lista de nomes firstNames
                         characterExporterQuiz(firstNames);
                         break;
                 }
@@ -81,7 +109,14 @@ int main(){
     return 0;
 }
 
-
+/*
+    Função: Adventure Generator
+    Descrição: Gera 5 aventuras aleatóriamente
+    Parâmetros: NameList* firstNames
+        Lista de nomes que o método recebe para gerar o nome dos NPCs
+    Retorno:
+        Nenhum!
+*/
 void adventureGenerator(NameList* firstNames){
     clear();
     printf("\n====== Aventuras geradas =======\n");
@@ -91,11 +126,16 @@ void adventureGenerator(NameList* firstNames){
     }
     printf("\n================================\n");
 }
-
+/*
+    Função: EncounterGenerator
+    Descrição: Gera 5 encontros aleatorios
+    Parâmetros: Nenhum
+    Retorno:
+        Nenhum!
+*/
 void encounterGenerator(){
     clear();
     printf("\n====== Encontros geradas ======\n");
-
     int i;
     for(i = 0; i <= 5; i++){
         printf("\n%d - %s %s apareceu %s\n",i+1,getEncounterData("./generators/encounters/who.csv"),
@@ -105,7 +145,14 @@ void encounterGenerator(){
     }
     printf("\n================================\n");
 }
-
+/*
+    Função: CharacterExporterQuiz
+    Descrição: Faz uma lista de perguntas para gerar uma exporção de uma lista de personagens   
+    Parâmetros: NameList* firstNames
+        Lista de nomes para para poder gerar um nome aleatorio para cada personagem
+    Retorno:
+        Nenhum!
+*/
 void characterExporterQuiz(NameList* firstNames){
     clear();
     int op;
@@ -132,7 +179,14 @@ void characterExporterQuiz(NameList* firstNames){
         break;
     } 
 }
-
+/*
+    Função: PrintCharInfo
+    Descrição: Exibe informações de um personagem   
+    Parâmetros: Character c
+        
+    Retorno:
+        Nenhum!
+*/
 void printCharInfo(Character c){
     printf("\n==========================\n");
     printf("Personagem gerado");

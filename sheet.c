@@ -152,7 +152,7 @@ void saveSheet(Character c, char* sheetFileName){
 
 void createSheet(Character c){
     char fileName[80];
-    sprintf(fileName,"%d",time(NULL));
+    sprintf(fileName,"%ld",time(NULL));
     char sheetFileName[100];
     strcpy(sheetFileName,concat("s_",fileName));
     char itemsFileName[100];

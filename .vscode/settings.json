@@ -12,6 +12,7 @@
         "dice.h": "c",
         "character.h": "c",
         "encounters.h": "c",
-        "adventure.h": "c"
+        "adventure.h": "c",
+        "time.h": "c"
     }
 }
